@@ -88,7 +88,7 @@ export function createWasmNotebookBackend(bridge: WasmNotebookBridge) {
         signal.removeEventListener("abort", abort);
       }
     },
-    notebook: (id) => {
+    notebook: (id = bridge.notebookId) => {
       if (id !== bridge.notebookId) {
         throw new Error(
           `The worker serves notebook ${bridge.notebookId}, not ${id}`,

@@ -269,8 +269,7 @@ export class PyodideBridge implements RunRequests, EditRequests {
 
   private async saveHostNotebook() {
     const backend = await this.createNotebookBackend();
-    const { id } = await this.rpc.proxy.request.notebookInfo();
-    const result = await backend.notebook(id).save();
+    const result = await backend.notebook().save();
     if (!result.ok) {
       throw new Error(result.problem.detail ?? result.problem.title);
     }
